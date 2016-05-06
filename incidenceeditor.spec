@@ -10,7 +10,7 @@ Version:	16.04.0
 %else
 %define ftpdir stable
 %endif
-Release:	2
+Release:	3
 Source0: http://download.kde.org/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
 Summary: KDE library for mail handling
 URL: http://kde.org/
@@ -44,7 +44,7 @@ BuildRequires: cmake(KF5CalendarCore)
 BuildRequires: cmake(KF5MailTransport)
 BuildRequires: sasl-devel
 
-%rename kincidenceeditor
+Obsoletes:	kincidenceeditor
 
 %description
 KDE library for mail handling
