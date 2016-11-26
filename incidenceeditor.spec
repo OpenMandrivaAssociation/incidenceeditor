@@ -42,12 +42,14 @@ BuildRequires: cmake(KF5KDGantt2)
 BuildRequires: cmake(KF5CalendarUtils)
 BuildRequires: cmake(KF5CalendarCore)
 BuildRequires: cmake(KF5MailTransport)
+BuildRequires: cmake(KF5Akonadi)
+BuildRequires: boost-devel
 BuildRequires: sasl-devel
 
-Obsoletes:	kincidenceeditor
+Obsoletes: kincidenceeditor
 
 %description
-KDE library for mail handling
+KDE library for mail handling.
 
 %package -n %{libname}
 Summary: KDE library for mail handling
@@ -55,7 +57,7 @@ Group: System/Libraries
 Requires: %{name} = %{EVRD}
 
 %description -n %{libname}
-KDE library for mail handling
+KDE library for mail handling.
 
 %package -n %{devname}
 Summary: Development files for %{name}
@@ -68,10 +70,9 @@ Development files (Headers etc.) for %{name}.
 %prep
 %setup -q
 %apply_patches
+%cmake_kde5
 
 %build
-%cmake_kde5
-cd ../
 %ninja -C build
 
 %install
