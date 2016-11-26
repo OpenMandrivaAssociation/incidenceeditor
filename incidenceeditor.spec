@@ -79,6 +79,7 @@ Development files (Headers etc.) for %{name}.
 %ninja_install -C build
 
 %files
+%{_sysconfdir}/xdg/incidenceeditor.categories
 %{_bindir}/kincidenceeditor
 
 %files -n %{libname}
