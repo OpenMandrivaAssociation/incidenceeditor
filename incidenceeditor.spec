@@ -3,7 +3,7 @@
 %define devname %mklibname KF5IncidenceEditor -d
 
 Name: incidenceeditor
-Version:	16.12.1
+Version:	16.12.2
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -80,6 +80,7 @@ Development files (Headers etc.) for %{name}.
 
 %files
 %{_sysconfdir}/xdg/incidenceeditor.categories
+%{_sysconfdir}/xdg/incidenceeditor.renamecategories
 %{_bindir}/kincidenceeditor
 
 %files -n %{libname}
