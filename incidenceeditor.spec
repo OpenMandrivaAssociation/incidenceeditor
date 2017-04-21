@@ -3,7 +3,7 @@
 %define devname %mklibname KF5IncidenceEditor -d
 
 Name: incidenceeditor
-Version:	16.12.2
+Version:	17.04.0
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -77,8 +77,9 @@ Development files (Headers etc.) for %{name}.
 
 %install
 %ninja_install -C build
+%find_lang libincidenceeditors
 
-%files
+%files -f libincidenceeditors.lang
 %{_sysconfdir}/xdg/incidenceeditor.categories
 %{_sysconfdir}/xdg/incidenceeditor.renamecategories
 %{_bindir}/kincidenceeditor
