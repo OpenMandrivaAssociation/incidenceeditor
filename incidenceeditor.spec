@@ -3,7 +3,7 @@
 %define devname %mklibname KF5IncidenceEditor -d
 
 Name: incidenceeditor
-Version:	19.04.3
+Version:	19.07.80
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -75,8 +75,8 @@ Development files (Headers etc.) for %{name}.
 %find_lang libincidenceeditors
 
 %files -f libincidenceeditors.lang
-%{_sysconfdir}/xdg/incidenceeditor.categories
-%{_sysconfdir}/xdg/incidenceeditor.renamecategories
+%{_datadir}/qlogging-categories5/incidenceeditor.categories
+%{_datadir}/qlogging-categories5/incidenceeditor.renamecategories
 %{_bindir}/kincidenceeditor
 
 %files -n %{libname}
