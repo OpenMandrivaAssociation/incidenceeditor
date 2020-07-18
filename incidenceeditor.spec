@@ -3,7 +3,7 @@
 %define devname %mklibname KF5IncidenceEditor -d
 
 Name: incidenceeditor
-Version:	20.04.3
+Version:	20.07.80
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -33,11 +33,11 @@ BuildRequires: cmake(KF5Ldap)
 BuildRequires: cmake(KF5Codecs)
 BuildRequires: cmake(KF5CalendarSupport)
 BuildRequires: cmake(KF5EventViews)
-BuildRequires: cmake(KF5LibkdepimAkonadi)
-BuildRequires: cmake(KF5KdepimDBusInterfaces)
 BuildRequires: cmake(KF5CalendarUtils)
 BuildRequires: cmake(KF5CalendarCore)
 BuildRequires: cmake(KF5MailTransportAkonadi)
+BuildRequires: cmake(KF5PimCommonAkonadi)
+BuildRequires: cmake(KF5Libkdepim)
 BuildRequires: boost-devel
 BuildRequires: sasl-devel
 
