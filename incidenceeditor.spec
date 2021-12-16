@@ -40,6 +40,9 @@ BuildRequires: cmake(KF5PimCommonAkonadi)
 BuildRequires: cmake(KF5Libkdepim)
 BuildRequires: boost-devel
 BuildRequires: sasl-devel
+# For QCH format docs
+BuildRequires: doxygen
+BuildRequires: qt5-assistant
 
 Obsoletes: kincidenceeditor
 
