@@ -3,14 +3,14 @@
 %define devname %mklibname KF5IncidenceEditor -d
 
 Name: incidenceeditor
-Version:	22.12.3
+Version:	23.03.90
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Release:	2
+Release:	1
 Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Summary: KDE library for mail handling
 URL: http://kde.org/
@@ -32,7 +32,7 @@ BuildRequires: cmake(KF5AkonadiMime)
 BuildRequires: cmake(KF5Ldap)
 BuildRequires: cmake(KF5Codecs)
 BuildRequires: cmake(KF5CalendarSupport)
-BuildRequires: cmake(KF5EventViews)
+BuildRequires: cmake(KPim5EventViews)
 BuildRequires: cmake(KF5CalendarUtils)
 BuildRequires: cmake(KF5CalendarCore)
 BuildRequires: cmake(KF5MailTransportAkonadi)
