@@ -36,7 +36,7 @@ BuildRequires: cmake(KPim5Ldap)
 BuildRequires: cmake(KPim5EventViews)
 BuildRequires: cmake(KPim5CalendarUtils)
 BuildRequires: cmake(KPim5MailTransport)
-BuildRequires: cmake(KPim5PimCommonAkonadi)
+BuildRequires: cmake(KPim5PimCommon)
 BuildRequires: cmake(KPim5Libkdepim)
 BuildRequires: boost-devel
 BuildRequires: sasl-devel
