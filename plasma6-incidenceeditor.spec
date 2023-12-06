@@ -40,6 +40,7 @@ BuildRequires: cmake(KPim6PimCommon)
 BuildRequires: cmake(KPim6Libkdepim)
 BuildRequires: cmake(KF6TextWidgets)
 BuildRequires: cmake(KF6TextAddonsWidgets)
+BuildRequires: cmake(KGantt6)
 BuildRequires: boost-devel
 BuildRequires: sasl-devel
 # For QCH format docs
