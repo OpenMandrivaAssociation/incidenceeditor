@@ -3,7 +3,7 @@
 %define devname %mklibname KPim6IncidenceEditor -d
 
 Name: plasma6-incidenceeditor
-Version:	24.01.80
+Version:	24.01.85
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -45,14 +45,12 @@ BuildRequires: cmake(KF6TextTemplate)
 BuildRequires: cmake(KGantt6)
 BuildRequires: boost-devel
 BuildRequires: sasl-devel
+BuildRequires: gettext
 # For QCH format docs
 BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
 
 Obsoletes: kincidenceeditor
-
-%patchlist
-incidenceeditor-24.01.80-buildfix.patch
 
 %description
 KDE library for mail handling.
@@ -75,7 +73,6 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %autosetup -p1 -n incidenceeditor-%{version}
-find . -name CMakeLists.txt |xargs sed -i -e 's,KGantt,KGantt6,g'
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
