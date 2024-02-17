@@ -1,17 +1,24 @@
+%define git 20240217
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define major 6
 %define libname %mklibname KPim6IncidenceEditor
 %define devname %mklibname KPim6IncidenceEditor -d
 
 Name: plasma6-incidenceeditor
-Version:	24.01.95
+Version:	24.01.96
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Release:	1
+Release:	%{?git:0.%{git}.}1
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/pim/incidenceeditor/-/archive/%{gitbranch}/incidenceeditor-%{gitbranchd}.tar.bz2#/incidenceeditor-%{git}.tar.bz2
+%else
 Source0: http://download.kde.org/%{ftpdir}/release-service/%{version}/src/incidenceeditor-%{version}.tar.xz
+%endif
 Summary: KDE library for mail handling
 URL: http://kde.org/
 License: GPL
@@ -70,7 +77,7 @@ Requires: %{libname} = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%autosetup -p1 -n incidenceeditor-%{version}
+%autosetup -p1 -n incidenceeditor-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
@@ -88,7 +95,6 @@ Development files (Headers etc.) for %{name}.
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
-%{_libdir}/*.so.5*
 
 %files -n %{devname}
 %{_includedir}/*
