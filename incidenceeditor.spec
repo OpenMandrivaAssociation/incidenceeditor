@@ -6,7 +6,7 @@
 %define devname %mklibname KPim6IncidenceEditor -d
 
 Name: incidenceeditor
-Version:	25.04.0
+Version:	25.04.3
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -56,6 +56,11 @@ BuildRequires: gettext
 # For QCH format docs
 BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
+# Renamed 2025/07/20 after 6.0
+%rename plasma6-incidenceeditor
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 KDE library for mail handling.
@@ -76,20 +81,7 @@ Requires: %{libname} = %{EVRD}
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
-%prep
-%autosetup -p1 -n incidenceeditor-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-%find_lang libincidenceeditors6
-
-%files -f libincidenceeditors6.lang
+%files -f %{name}.lang
 %{_datadir}/qlogging-categories6/incidenceeditor.categories
 %{_datadir}/qlogging-categories6/incidenceeditor.renamecategories
 
